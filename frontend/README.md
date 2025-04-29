@@ -8,7 +8,7 @@ This is the frontend application for the AI-powered journaling app with music re
 *   Vite
 *   TypeScript
 *   React Router DOM
-*   React Modal (Optional - add if used)
+*   React Modal
 *   CSS Modules
 
 ## Setup and Running Locally
