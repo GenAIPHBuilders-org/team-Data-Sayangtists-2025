@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import ReactModal from 'react-modal';
-import styles from './NewEntryModal.module.css';
+import {
+  Modal, ModalOverlay, ModalContent,
+  ModalHeader, ModalFooter, ModalBody,
+  ModalCloseButton, Button, Input,
+  Textarea,
+} from "@chakra-ui/react";
+// import ReactModal from 'react-modal';
+// import styles from './NewEntryModal.module.css';
 
-// Modal accessibility setup
-ReactModal.setAppElement('#root'); // Or VibeScribe's root element ID
 
 interface NewEntryModalProps {
   isOpen: boolean;
@@ -35,36 +39,35 @@ const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave }
   };
 
   return (
-    <ReactModal
-      isOpen={isOpen}
-      onRequestClose={onClose}
-      className={styles.modalContent}
-      overlayClassName={styles.modalOverlay}
-      contentLabel="New Journal Entry Modal"
-    >
-      <h2 className={styles.modalTitle}>New Entry</h2>
-      <input
-        type="text"
-        placeholder="Entry Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        className={styles.inputField}
-      />
-      <textarea
-        placeholder="Start writing your entry here..."
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        className={styles.textAreaField}
-      />
-      <div className={styles.buttonContainer}>
-        <button onClick={onClose} className={`${styles.modalButton} ${styles.cancelButton}`}>
-          Cancel
-        </button>
-        <button onClick={handleSave} className={`${styles.modalButton} ${styles.saveButton}`}>
-          Save
-        </button>
-      </div>
-    </ReactModal>
+    <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader fontWeight="bold" fontSize="xl">New Entry</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody pb={6}>
+          <Input
+            placeholder="Entry Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            mb={4}
+          />
+          <Textarea 
+            placeholder="Start writing your entry here..."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            minHeight="200px"
+          />
+        </ModalBody>
+        <ModalFooter>
+          <Button variant="ghost" mr={3} onClick={onClose}>
+            Cancel
+          </Button>
+          <Button colorScheme='blue' onClick={handleSave}>
+            Save
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
   );
 };
 

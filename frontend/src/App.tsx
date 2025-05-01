@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Flex } from '@chakra-ui/react';
 import Sidebar from './components/Sidebar/Sidebar';
 import MainContent from './components/MainContent/MainContent';
 import NewEntryModal from './components/Modal/NewEntryModal';
 import { JournalEntrySummary, JournalEntryDetail, MusicRecommendationData } from './types';
-import styles from './App.module.css';
+// import styles from './App.module.css';
 
 // --- Mock Data (Replace with API calls soon) ---
 const mockEntriesSummary: JournalEntrySummary[] = [
@@ -109,23 +110,23 @@ function App() {
   };
 
   return (
-    <div className={styles.appLayout}>
-      <Sidebar
+    <Flex h="100vh" w="100vw" overflow="hidden">
+      <Sidebar 
         entries={entries}
         selectedEntryId={selectedEntryId}
         onSelectEntry={handleSelectEntry}
         onNewEntryClick={handleOpenModal}
       />
-      <MainContent
+      <MainContent 
         viewState={mainContentView}
         entryData={selectedEntryData}
       />
-      <NewEntryModal
+      <NewEntryModal 
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         onSave={handleSaveEntry}
       />
-    </div>
+    </Flex>  
   );
 }
 
