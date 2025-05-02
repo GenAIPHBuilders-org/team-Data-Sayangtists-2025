@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Heading, Text, Spinner, Center, Divider, VStack } from "@chakra-ui/react";
+import { Box, Heading, Text, Spinner, Center, Divider, VStack } from '@chakra-ui/react';
 import { JournalEntryDetail } from '../../types';
 import MusicRecommendation from './MusicRecommendation';
 // import styles from './MainContent.module.css';
@@ -29,7 +29,11 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
       case 'detail':
         if (!entryData) {
           // Handle error case - should not happen if logic is correct
-          return <Center h="80%" color="red.500">Error: Entry data missing.</Center> 
+          return (
+            <Center h="80%" color="red.500">
+              Error: Entry data missing.
+            </Center>
+          );
         }
         return (
           <VStack align="stretch" spacing={8}>
@@ -51,7 +55,7 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
               {entryData.recommendations.length > 0 ? (
                 <VStack align="stretch" spacing={5}>
                   {entryData.recommendations.map((rec) => (
-                    <MusicRecommendation key={rec.id} recommendation={rec}/>
+                    <MusicRecommendation key={rec.id} recommendation={rec} />
                   ))}
                 </VStack>
               ) : (
@@ -66,17 +70,10 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
   };
 
   return (
-    <Box
-      as="main"
-      flexGrow={1}
-      h="100%"
-      p={10}
-      overflowY="auto"
-      bg="white"
-    >
+    <Box as="main" flexGrow={1} h="100%" p={10} overflowY="auto" bg="white">
       {renderContent()}
     </Box>
-  ) 
+  );
 };
 
 export default MainContent;

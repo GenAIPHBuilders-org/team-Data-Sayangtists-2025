@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Heading, Text, Image, Circle } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, Image, Circle } from '@chakra-ui/react';
 import { MusicRecommendationData } from '../../types';
 // import styles from './MusicRecommendation.module.css';
 
@@ -9,21 +9,10 @@ interface MusicRecommendationProps {
 
 const MusicRecommendation: React.FC<MusicRecommendationProps> = ({ recommendation }) => {
   return (
-    <Flex
-      align="center"
-      bg="gray.50"
-      p={4}
-      borderRadius="md"
-    >
-      <Box
-        w="80px"
-        h="80px"
-        bg="gray.300"
-        borderRadius="sm"
-        mr={5}
-      >
+    <Flex align="center" bg="gray.50" p={4} borderRadius="md">
+      <Box w="80px" h="80px" bg="gray.300" borderRadius="sm" mr={5}>
         {recommendation.imageUrl && (
-          <Image 
+          <Image
             src={recommendation.imageUrl}
             alt={recommendation.title}
             boxSize="80px"

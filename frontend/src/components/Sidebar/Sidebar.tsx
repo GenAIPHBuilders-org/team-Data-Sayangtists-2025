@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Heading, List, VStack } from '@chakra-ui/react'
+import { Box, Button, Heading, List, VStack } from '@chakra-ui/react';
 import { JournalEntrySummary } from '../../types';
 import EntryListItem from './EntryListItem';
 // import styles from './Sidebar.module.css';
@@ -42,7 +42,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         </Button>
         <List spacing={0} flexGrow={1}>
           {entries.map((entry) => (
-            <EntryListItem 
+            <EntryListItem
               key={entry.id}
               entry={entry}
               isActive={entry.id === selectedEntryId}
