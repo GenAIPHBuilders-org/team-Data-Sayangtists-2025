@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
 import { Flex } from '@chakra-ui/react';
-import Sidebar from './components/Sidebar/Sidebar';
-import MainContent from './components/MainContent/MainContent';
-import NewEntryModal from './components/Modal/NewEntryModal';
-import { JournalEntrySummary, JournalEntryDetail, MusicRecommendationData } from './types';
-// import styles from './App.module.css';
+import { useState, useEffect } from 'react';
+
+import MainContent from './components/MainContent/MainContent.tsx';
+import NewEntryModal from './components/Modal/NewEntryModal.tsx';
+import Sidebar from './components/Sidebar/Sidebar.tsx';
+import { JournalEntrySummary, JournalEntryDetail, MusicRecommendationData } from './types/index.ts';
 
 // --- Mock Data (Replace with API calls soon) ---
 const mockEntriesSummary: JournalEntrySummary[] = [

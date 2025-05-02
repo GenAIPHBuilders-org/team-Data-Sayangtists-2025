@@ -1,7 +1,7 @@
-import React from 'react';
 import { ListItem, Text } from '@chakra-ui/react';
-import { JournalEntrySummary } from '../../types';
-// import styles from './EntryListItem.module.css';
+import React from 'react';
+
+import { JournalEntrySummary } from '../../types/index.ts';
 
 interface EntryListItemProps {
   entry: JournalEntrySummary;

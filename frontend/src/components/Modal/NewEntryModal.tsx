@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -11,8 +10,7 @@ import {
   Input,
   Textarea,
 } from '@chakra-ui/react';
-// import ReactModal from 'react-modal';
-// import styles from './NewEntryModal.module.css';
+import React, { useState, useEffect } from 'react';
 
 interface NewEntryModalProps {
   isOpen: boolean;

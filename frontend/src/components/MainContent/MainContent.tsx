@@ -1,7 +1,8 @@
-import React from 'react';
 import { Box, Heading, Text, Spinner, Center, Divider, VStack } from '@chakra-ui/react';
-import { JournalEntryDetail } from '../../types';
-import MusicRecommendation from './MusicRecommendation';
+import React from 'react';
+
+import MusicRecommendation from './MusicRecommendation.tsx';
+import { JournalEntryDetail } from '../../types/index.ts';
 // import styles from './MainContent.module.css';
 
 type ViewState = 'welcome' | 'loading' | 'detail';
@@ -17,7 +18,8 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
       case 'welcome':
         return (
           <Center h="80%" textAlign="center" color="gray.500" fontSize="lg">
-            Select an entry from the left to view it, or click '+ New Entry' to start writing
+            Select an entry from the left to view it, or click &lsquo;+ New Entry&rsquo; to start
+            writing
           </Center>
         );
       case 'loading':

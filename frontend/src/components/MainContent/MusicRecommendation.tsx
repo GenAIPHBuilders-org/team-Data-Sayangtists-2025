@@ -1,6 +1,7 @@
-import React from 'react';
 import { Box, Flex, Heading, Text, Image, Circle } from '@chakra-ui/react';
-import { MusicRecommendationData } from '../../types';
+import React from 'react';
+
+import { MusicRecommendationData } from '../../types/index.ts';
 // import styles from './MusicRecommendation.module.css';
 
 interface MusicRecommendationProps {
