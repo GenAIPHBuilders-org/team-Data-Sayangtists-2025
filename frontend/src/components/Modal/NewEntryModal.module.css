@@ -1,0 +1,79 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modalTitle {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #343a40;
+}
+
+.inputField,
+.textAreaField {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.textAreaField {
+  min-height: 200px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.modalButton {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+  border: 1px solid transparent;
+}
+
+.cancelButton {
+  background-color: #f8f9fa;
+  color: #495057;
+  border-color: #ced4da;
+}
+.cancelButton:hover {
+  background-color: #e9ecef;
+}
+
+.saveButton {
+  background-color: #007bff;
+  color: white;
+}
+.saveButton:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,12 @@
+.appLayout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Ensure children components don't cause overflow issues if not handled internally */
+.appLayout > * {
+    height: 100%;
+    overflow-y: auto;
+}

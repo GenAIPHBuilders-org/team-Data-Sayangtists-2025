@@ -1,0 +1,29 @@
+.listItem {
+  padding: 15px 10px;
+  border-bottom: 1px solid #e9ecef;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.listItem:hover {
+  background-color: #f1f3f5;
+}
+
+.listItem.active {
+  background-color: #e9ecef;
+  font-weight: bold;
+}
+
+.itemTitle {
+  font-size: 0.95rem;
+  color: #212529;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemDate {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
