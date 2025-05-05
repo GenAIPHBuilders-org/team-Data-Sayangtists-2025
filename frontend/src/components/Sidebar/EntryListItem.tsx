@@ -1,7 +1,7 @@
-import React from 'react';
 import { ListItem, Text } from '@chakra-ui/react';
-import { JournalEntrySummary } from '../../types';
-// import styles from './EntryListItem.module.css';
+import React from 'react';
+
+import { JournalEntrySummary } from '../../types/index.ts';
 
 interface EntryListItemProps {
   entry: JournalEntrySummary;
@@ -21,7 +21,7 @@ const EntryListItem: React.FC<EntryListItemProps> = ({ entry, isActive, onSelect
       borderColor="gray.100"
       cursor="pointer"
       transition="background-color 0.2s ease"
-      _hover={{ bg: 'gray.100'}}
+      _hover={{ bg: 'gray.100' }}
       bg={isActive ? 'gray.200' : 'transparent'}
       fontWeight={isActive ? 'bold' : 'normal'}
       onClick={handleClick}
@@ -35,5 +35,5 @@ const EntryListItem: React.FC<EntryListItemProps> = ({ entry, isActive, onSelect
     </ListItem>
   );
 };
- 
+
 export default EntryListItem;

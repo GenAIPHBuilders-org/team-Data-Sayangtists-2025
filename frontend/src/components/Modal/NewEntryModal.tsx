@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
 import {
-  Modal, ModalOverlay, ModalContent,
-  ModalHeader, ModalFooter, ModalBody,
-  ModalCloseButton, Button, Input,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  Input,
   Textarea,
-} from "@chakra-ui/react";
-// import ReactModal from 'react-modal';
-// import styles from './NewEntryModal.module.css';
-
+} from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
 
 interface NewEntryModalProps {
   isOpen: boolean;
@@ -22,19 +25,19 @@ const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave }
   // Reset fields when modal opens/closes if needed, or just closes
   useEffect(() => {
     if (!isOpen) {
-        setTitle('');
-        setContent('');
+      setTitle('');
+      setContent('');
     }
   }, [isOpen]);
 
   const handleSave = () => {
     // Basic validation could be added here
     if (title.trim() && content.trim()) {
-        onSave(title, content);
-        // Reminder: Implement logic to keep modal open until save is confirmed by parent. For now, modal will close immediately.
-        onClose();
+      onSave(title, content);
+      // Reminder: Implement logic to keep modal open until save is confirmed by parent. For now, modal will close immediately.
+      onClose();
     } else {
-        alert('Please enter both title and content.');
+      alert('Please enter both title and content.');
     }
   };
 
@@ -42,7 +45,9 @@ const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave }
     <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader fontWeight="bold" fontSize="xl">New Entry</ModalHeader>
+        <ModalHeader fontWeight="bold" fontSize="xl">
+          New Entry
+        </ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
           <Input
@@ -51,7 +56,7 @@ const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave }
             onChange={(e) => setTitle(e.target.value)}
             mb={4}
           />
-          <Textarea 
+          <Textarea
             placeholder="Start writing your entry here..."
             value={content}
             onChange={(e) => setContent(e.target.value)}
@@ -62,7 +67,7 @@ const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave }
           <Button variant="ghost" mr={3} onClick={onClose}>
             Cancel
           </Button>
-          <Button colorScheme='blue' onClick={handleSave}>
+          <Button colorScheme="blue" onClick={handleSave}>
             Save
           </Button>
         </ModalFooter>

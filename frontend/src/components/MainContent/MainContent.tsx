@@ -1,7 +1,8 @@
+import { Box, Heading, Text, Spinner, Center, Divider, VStack } from '@chakra-ui/react';
 import React from 'react';
-import { Box, Heading, Text, Spinner, Center, Divider, VStack } from "@chakra-ui/react";
-import { JournalEntryDetail } from '../../types';
-import MusicRecommendation from './MusicRecommendation';
+
+import MusicRecommendation from './MusicRecommendation.tsx';
+import { JournalEntryDetail } from '../../types/index.ts';
 // import styles from './MainContent.module.css';
 
 type ViewState = 'welcome' | 'loading' | 'detail';
@@ -17,7 +18,8 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
       case 'welcome':
         return (
           <Center h="80%" textAlign="center" color="gray.500" fontSize="lg">
-            Select an entry from the left to view it, or click '+ New Entry' to start writing
+            Select an entry from the left to view it, or click &lsquo;+ New Entry&rsquo; to start
+            writing
           </Center>
         );
       case 'loading':
@@ -29,7 +31,11 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
       case 'detail':
         if (!entryData) {
           // Handle error case - should not happen if logic is correct
-          return <Center h="80%" color="red.500">Error: Entry data missing.</Center> 
+          return (
+            <Center h="80%" color="red.500">
+              Error: Entry data missing.
+            </Center>
+          );
         }
         return (
           <VStack align="stretch" spacing={8}>
@@ -51,7 +57,7 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
               {entryData.recommendations.length > 0 ? (
                 <VStack align="stretch" spacing={5}>
                   {entryData.recommendations.map((rec) => (
-                    <MusicRecommendation key={rec.id} recommendation={rec}/>
+                    <MusicRecommendation key={rec.id} recommendation={rec} />
                   ))}
                 </VStack>
               ) : (
@@ -66,17 +72,10 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
   };
 
   return (
-    <Box
-      as="main"
-      flexGrow={1}
-      h="100%"
-      p={10}
-      overflowY="auto"
-      bg="white"
-    >
+    <Box as="main" flexGrow={1} h="100%" p={10} overflowY="auto" bg="white">
       {renderContent()}
     </Box>
-  ) 
+  );
 };
 
 export default MainContent;

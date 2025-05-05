@@ -4,27 +4,30 @@ This is the frontend application for the AI-powered journaling app with music re
 
 ## Technology Stack
 
-*   React
-*   Vite
-*   TypeScript
-*   React Router DOM
-*   React Modal
-*   CSS Modules
+- React
+- Vite
+- TypeScript
+- React Router DOM
+- React Modal
+- CSS Modules
 
 ## Setup and Running Locally
 
 1.  **Clone the repository:**
+
     ```bash
     git clone <your-repo-url>
     cd <your-repo-name>/frontend
     ```
 
 2.  **Install dependencies:**
+
     ```bash
     npm install
     ```
 
 3.  **Run the development server:**
+
     ```bash
     npm run dev
     ```
@@ -33,7 +36,7 @@ This is the frontend application for the AI-powered journaling app with music re
 
 ## Available Scripts
 
-*   `npm run dev`: Starts the development server.
-*   `npm run build`: Builds the app for production.
-*   `npm run lint`: Lints the code (if configured).
-*   `npm run preview`: Serves the production build locally.
+- `npm run dev`: Starts the development server.
+- `npm run build`: Builds the app for production.
+- `npm run lint`: Lints the code (if configured).
+- `npm run preview`: Serves the production build locally.
