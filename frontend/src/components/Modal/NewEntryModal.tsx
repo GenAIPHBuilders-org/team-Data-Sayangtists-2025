@@ -16,9 +16,10 @@ interface NewEntryModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSave: (title: string, content: string) => void;
+  isSaving: boolean;
 }
 
-const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave }) => {
+const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave, isSaving }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -31,43 +32,52 @@ const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave }
   }, [isOpen]);
 
   const handleSave = () => {
-    // Basic validation could be added here
-    if (title.trim() && content.trim()) {
-      onSave(title, content);
-      // Reminder: Implement logic to keep modal open until save is confirmed by parent. For now, modal will close immediately.
+    if (isSaving || !title.trim() || !content.trim()) return;
+
+    onSave(title, content);
+  };
+
+  const handleRequestClose = () => {
+    if (!isSaving) {
       onClose();
-    } else {
-      alert('Please enter both title and content.');
     }
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+    <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered closeOnOverlayClick={!isSaving}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader fontWeight="bold" fontSize="xl">
           New Entry
         </ModalHeader>
-        <ModalCloseButton />
+        <ModalCloseButton disabled={isSaving} />
         <ModalBody pb={6}>
           <Input
             placeholder="Entry Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             mb={4}
+            isDisabled={isSaving}
           />
           <Textarea
             placeholder="Start writing your entry here..."
             value={content}
             onChange={(e) => setContent(e.target.value)}
             minHeight="200px"
+            isDisabled={isSaving}
           />
         </ModalBody>
+
         <ModalFooter>
-          <Button variant="ghost" mr={3} onClick={onClose}>
+          <Button variant="ghost" mr={3} onClick={handleRequestClose} isDisabled={isSaving}>
             Cancel
           </Button>
-          <Button colorScheme="blue" onClick={handleSave}>
+          <Button
+            colorScheme="blue"
+            onClick={handleSave}
+            isLoading={isSaving}
+            isDisabled={isSaving || !title.trim() || !content.trim()}
+          >
             Save
           </Button>
         </ModalFooter>
