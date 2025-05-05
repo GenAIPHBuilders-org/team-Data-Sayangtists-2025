@@ -29,7 +29,7 @@ export const getJournalEntries = async (): Promise<JournalEntrySummary[]> => {
       id: '3',
       title: 'Weekend Plans (API Mock',
       snippet: 'Looking forward to...',
-      date: 'Apr 23, 2025',
+      date: 'May 3, 2025',
     },
   ];
   /** Actual API call structure:
@@ -53,23 +53,23 @@ export const getJournalEntryDetail = async (id: string): Promise<JournalEntryDet
   await new Promise((resolve) => setTimeout(resolve, 500));
 
   const mockEntriesSummary = [
-    { id: '1', title: 'Great Day (API Mock)', snippet: 'Went for a walk...', date: 'Apr 25, 2025' },
+    { id: '1', title: 'Great Day (API Mock)', snippet: 'Went for a walk...', date: 'May 1, 2025' },
     {
       id: '2',
       title: 'Thoughtful (API Mock)',
       snippet: 'Thinking about the project...',
-      date: 'Apr 24, 2025',
+      date: 'May 2, 2025',
     },
     {
       id: '3',
       title: 'Weekend Plans (API Mock)',
       snippet: 'Looking forward to...',
-      date: 'Apr 23, 2025',
+      date: 'May 3, 2025',
     },
   ];
   const mockRecommendations = [
-    { id: 'rec1', title: 'Weightless', artist: 'Marconi Union', imageUrl: undefined },
-    { id: 'rec2', title: 'Teardrop', artist: 'Massive Attack', imageUrl: undefined },
+    { id: 'rec1', title: 'NOKIA', artist: 'Drake', imageUrl: undefined },
+    { id: 'rec2', title: 'Espresso', artist: 'Sabrina Carpenter', imageUrl: undefined },
   ];
   const summary = mockEntriesSummary.find((entry) => entry.id === id);
   if (!summary) return null;
