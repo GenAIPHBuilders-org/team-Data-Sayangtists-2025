@@ -1,2 +1,7 @@
-# Ignore Python virtual environment
-.venv/
+# Python env inside backend
+/backend/.venv/
+
+# Bytecode & caches
+*.py[cod]
+__pycache__/
+*/migrations/
