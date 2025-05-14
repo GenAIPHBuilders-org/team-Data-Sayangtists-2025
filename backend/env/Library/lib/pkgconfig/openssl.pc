@@ -1,9 +1,0 @@
-prefix=C:/Users/Admin/Hackathon_clone_001/team-Data-Sayangtists-2025/backend/env/Library 
-exec_prefix=${prefix}
-libdir=${exec_prefix}/lib
-includedir=${prefix}/include
-
-Name: OpenSSL
-Description: Secure Sockets Layer and cryptography libraries and tools
-Requires: libssl libcrypto
-Version: 3.0.16 
