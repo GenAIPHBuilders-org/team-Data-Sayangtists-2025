@@ -8,7 +8,7 @@ import requests
 # Load environment variables
 load_dotenv()
 
-load_dotenv(dotenv_path="../../env/.env")
+load_dotenv(dotenv_path="../env/.env")
 
 # API keys
 genai.configure(api_key=os.getenv("GOOG_API_KEY")) # type: ignore
