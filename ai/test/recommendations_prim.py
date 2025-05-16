@@ -15,7 +15,7 @@ genai.configure(api_key=os.getenv("GOOG_API_KEY")) # type: ignore
 last_fm_api = os.getenv("LFM_API_KEY")
 
 # Initialize the model
-model = genai.GenerativeModel("models/gemma-3-12b-it") # type: ignore
+model = genai.GenerativeModel("models/gemini-2.0-flash") # type: ignore
 
 def extract_themes(text):
     prompt = f"""You are a helpful assistant that summarizes content themes concisely.
