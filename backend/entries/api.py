@@ -20,11 +20,16 @@ def entries_list_create(request):
         return Response(data)
 
     # POST
-    content = request.data.get('content', '').strip()
+    title    = request.data.get('title', '').strip()
+    content  = request.data.get('content', '').strip()
     raw_date = request.data.get('entry_date')
+
+    if not title:
+        return Response({'error': 'Title is required.'}, status=status.HTTP_400_BAD_REQUEST)
     if not content:
         return Response({'error': 'Content is required.'}, status=status.HTTP_400_BAD_REQUEST)
 
+    # parse entry_date as before…
     if raw_date:
         try:
             entry_date = date.fromisoformat(raw_date)
@@ -36,8 +41,10 @@ def entries_list_create(request):
     entry = JournalEntry.objects.create(
         user=request.user,
         entry_date=entry_date,
+        title=title,              # save the title
         content=content
     )
+
     serializer = JournalEntrySummarySerializer(entry)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 

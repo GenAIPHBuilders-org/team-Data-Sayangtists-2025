@@ -3,7 +3,6 @@ from .models import JournalEntry, EntryAnalysis, Recommendation
 
 class JournalEntrySummarySerializer(serializers.ModelSerializer):
     snippet = serializers.SerializerMethodField()
-    title   = serializers.SerializerMethodField()
     date    = serializers.DateField(source='entry_date', format="%b %d, %Y")
 
     class Meta:
@@ -12,9 +11,6 @@ class JournalEntrySummarySerializer(serializers.ModelSerializer):
 
     def get_snippet(self, obj):
         return obj.content[:30] + '...'
-
-    def get_title(self, obj):
-        return obj.content.split('\n', 1)[0]
 
 
 class EntryAnalysisSerializer(serializers.ModelSerializer):
@@ -35,4 +31,4 @@ class JournalEntryDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = JournalEntry
-        fields = ['id', 'entry_date', 'content', 'analysis', 'recommendations']
+        fields = ['id', 'entry_date', 'title', 'content', 'analysis', 'recommendations']
