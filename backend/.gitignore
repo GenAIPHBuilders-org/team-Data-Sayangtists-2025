@@ -1,5 +1,8 @@
 # Python env inside backend
-/backend/.venv/
+/backend/env/
+
+# local SQLite database
+db.sqlite3
 
 # Bytecode & caches
 *.py[cod]

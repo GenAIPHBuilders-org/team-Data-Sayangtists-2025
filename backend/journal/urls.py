@@ -16,8 +16,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import path
+from entries.api import entries_list_create, retrieve_entry
 
 urlpatterns = [
+    path("", lambda req: redirect("api/entries/")),
     path("admin/", admin.site.urls),
+    path("api/entries/", entries_list_create, name="entries-list-create"),
+    path("api/entries/<uuid:pk>/", retrieve_entry, name="entry-detail"),
 ]
