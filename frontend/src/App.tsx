@@ -109,7 +109,7 @@ function App() {
     setIsSaving(true);
     try {
       const newEntrySummary = await createJournalEntry({ title, content });
-      setEntries((prevEntries) => [newEntrySummary, ...prevEntries]);
+      setEntries((prevEntries = []) => [newEntrySummary, ...prevEntries]);
       setSelectedEntryId(newEntrySummary.id);
       setIsModalOpen(false);
       toast({
