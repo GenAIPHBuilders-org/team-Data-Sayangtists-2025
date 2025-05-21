@@ -1,3 +1,10 @@
+import sys
+from pathlib import Path
+
+project_root = Path(__file__).resolve().parent.parent.parent
+sys.path.append(str(project_root))
+
+
 from datetime import date
 from django.utils import timezone
 from django.contrib.auth import get_user_model
@@ -8,11 +15,14 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 
-from .models import JournalEntry
+from .models import JournalEntry, Recommendation
 from .serializers import (
     JournalEntrySummarySerializer,
     JournalEntryDetailSerializer
 )
+
+from ai.test.recommendations_prim import build_recommendations
+
 
 User = get_user_model()
 HARDCODED_USERNAME = 'sayangtist' #My local username
@@ -56,6 +66,30 @@ def entries_list_create(request):
         title=title,
         content=content
     )
+
+    try:
+        recommendations_data = build_recommendations(content)
+
+        for theme_data in recommendations_data[0]['recommendations']:
+            theme = theme_data['theme']
+            for track in theme_data['tracks']:
+                Recommendation.objects.create(
+                    entry=entry,
+                    service="lastfm",
+                    rec_type="track",
+                    rec_id=track["url"].split("/")[-1],
+                    rec_name=track["name"],
+                    artist=track["artist"],
+                    metadata={
+                        "image_url": track["image"],
+                        "url": track["url"],
+                        "theme": theme
+                    }
+                )
+    except Exception as e:
+        print(f"Error generating recommendations: {e}")
+            
+
     return Response(JournalEntrySummarySerializer(entry).data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET'])
