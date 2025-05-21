@@ -16,8 +16,8 @@ const apiClient = axios.create({
  */
 export const getJournalEntries = async (): Promise<JournalEntrySummary[]> => {
   try {
-    const response = await apiClient.get<{ results: JournalEntrySummary[] }>('/entries/');
-    return response.data.results;
+    const response = await apiClient.get<JournalEntrySummary[]>('/entries/');
+    return response.data;
   } catch (error) {
     console.error('Error fetching journal entries:', error);
     throw error;
