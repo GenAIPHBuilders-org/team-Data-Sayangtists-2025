@@ -16,7 +16,7 @@ class EntryAnalysisAdmin(admin.ModelAdmin):
 
 @admin.register(Recommendation)
 class RecommendationAdmin(admin.ModelAdmin):
-    list_display = ('entry', 'service', 'rec_type', 'rec_name', 'recommended_at')
+    list_display = ("id", "rec_name", "artist", "entry")
     list_filter = ('service', 'rec_type')
 
 @admin.register(UserToken)
