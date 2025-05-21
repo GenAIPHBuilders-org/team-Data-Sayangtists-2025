@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 
 from .models import JournalEntry
 from .serializers import (
@@ -14,32 +15,23 @@ from .serializers import (
 )
 
 User = get_user_model()
-HARCODED_USERNAME = 'shaun'
+HARDCODED_USERNAME = 'sayangtist' #My local username
+
+def get_current_user(request):
+    if settings.DEBUG:
+        return User.objects.get(username=HARDCODED_USERNAME)
+    return request.user
 
 @api_view(['GET', 'POST'])
-@permission_classes([])
+@permission_classes([AllowAny])
 def entries_list_create(request):
-    actual_user = request.user
-    
-    if settings.DEBUG and HARCODED_USERNAME:
-        try:
-            hardcoded_user = User.objects.get(username=HARCODED_USERNAME)
-            request.user = hardcoded_user
-            print(f"Using hardcoded user: {request.user.username}")
-        except User.DoesNotExist:
-            return Response(
-                {'error': f'Hardcoded user "{HARCODED_USERNAME}" not found.'},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
-    elif not request.user or not request.user.is_authenticated:
-        return Response({'error': 'Authentication credentials were not provided.'},
-                        status=status.HTTP_401_UNAUTHORIZED)
-    if request.method == 'GET':
-        qs = JournalEntry.objects.filter(user=request.user).order_by('-entry_date')
-        data = JournalEntrySummarySerializer(qs, many=True).data
-        return Response(data)
+    user = get_current_user(request)
 
-    # POST
+    if request.method == 'GET':
+        qs = JournalEntry.objects.filter(user=user).order_by('-entry_date')
+        return Response(JournalEntrySummarySerializer(qs, many=True).data)
+
+    # POST branch
     title    = request.data.get('title', '').strip()
     content  = request.data.get('content', '').strip()
     raw_date = request.data.get('entry_date')
@@ -49,53 +41,29 @@ def entries_list_create(request):
     if not content:
         return Response({'error': 'Content is required.'}, status=status.HTTP_400_BAD_REQUEST)
 
-    # parse entry_date as before…
+    # parse date…
     if raw_date:
         try:
             entry_date = date.fromisoformat(raw_date)
         except ValueError:
-            return Response({'error': 'Invalid date format. Use YYYY-MM-DD.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'Invalid date format.'}, status=status.HTTP_400_BAD_REQUEST)
     else:
         entry_date = timezone.now().date()
 
     entry = JournalEntry.objects.create(
-        user=request.user,
+        user=user,
         entry_date=entry_date,
-        title=title,              # save the title
+        title=title,
         content=content
     )
-
-    serializer = JournalEntrySummarySerializer(entry)
-    return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(JournalEntrySummarySerializer(entry).data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET'])
-@permission_classes([])
+@permission_classes([AllowAny])
 def retrieve_entry(request, pk):
-    """
-    Return full detail (content, analysis, recommendations) for one entry.
-    """
-    actual_user = request.user
-
-    if settings.DEBUG and HARDCODED_USERNAME: # Only in DEBUG mode!
-        try:
-            hardcoded_user = User.objects.get(username=HARDCODED_USERNAME)
-            request.user = hardcoded_user
-            print(f"DEBUG: Using hardcoded user: {request.user.username}")
-        except User.DoesNotExist:
-            return Response(
-                {'error': f'Hardcoded user "{HARDCODED_USERNAME}" not found.'},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
-    elif not request.user or not request.user.is_authenticated:
-        return Response({'error': 'Authentication credentials were not provided.'},
-                        status=status.HTTP_401_UNAUTHORIZED)
-    # --- End hard-coding section ---
-
+    user = get_current_user(request)
     try:
-        entry = JournalEntry.objects.get(pk=pk, user=request.user)
+        entry = JournalEntry.objects.get(pk=pk, user=user)
     except JournalEntry.DoesNotExist:
         return Response({'detail': 'Not found.'}, status=status.HTTP_404_NOT_FOUND)
-
-    serializer = JournalEntryDetailSerializer(entry)
-    return Response(serializer.data)
-
+    return Response(JournalEntryDetailSerializer(entry).data)
