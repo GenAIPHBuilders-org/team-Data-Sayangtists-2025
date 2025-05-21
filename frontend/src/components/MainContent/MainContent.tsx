@@ -41,7 +41,7 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
           <VStack align="stretch" spacing={8}>
             <Box>
               <Heading as="h2" size="xl" mb={4} color="gray.700">
-                {entryData.title} / {entryData.date}
+                {entryData.title} / {new Date(entryData.entry_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
               </Heading>
               <Text fontSize="md" lineHeight="tall" color="gray.600" whiteSpace="pre-wrap">
                 {entryData.content}
