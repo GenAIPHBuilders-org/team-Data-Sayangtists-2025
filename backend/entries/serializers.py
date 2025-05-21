@@ -22,7 +22,7 @@ class EntryAnalysisSerializer(serializers.ModelSerializer):
 class RecommendationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recommendation
-        fields = ['service', 'rec_type', 'rec_id', 'rec_name']
+        fields = ['id', 'rec_name', 'artist', 'metadata']
 
 
 class JournalEntryDetailSerializer(serializers.ModelSerializer):
