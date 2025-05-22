@@ -12,10 +12,10 @@ const MusicRecommendation: React.FC<MusicRecommendationProps> = ({ recommendatio
   return (
     <Flex align="center" bg="gray.50" p={4} borderRadius="md">
       <Box w="80px" h="80px" bg="gray.300" borderRadius="sm" mr={5}>
-        {recommendation.imageUrl && (
+        {recommendation.metadata?.image_url && (
           <Image
-            src={recommendation.imageUrl}
-            alt={recommendation.title}
+            src={recommendation.metadata?.image_url}
+            alt={recommendation.rec_name}
             boxSize="80px"
             objectFit="cover"
             borderRadius="sm"
@@ -24,7 +24,7 @@ const MusicRecommendation: React.FC<MusicRecommendationProps> = ({ recommendatio
       </Box>
       <Box flexGrow={1}>
         <Heading as="h4" size="sm" mb={1} color="gray.700">
-          {recommendation.title}
+          {recommendation.rec_name}
         </Heading>
         <Text fontSize="sm" color="gray.600" mb={2}>
           {recommendation.artist}

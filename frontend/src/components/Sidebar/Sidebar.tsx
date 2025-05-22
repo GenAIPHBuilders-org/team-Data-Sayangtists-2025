@@ -5,14 +5,14 @@ import EntryListItem from './EntryListItem.tsx';
 import { JournalEntrySummary } from '../../types/index.ts';
 
 interface SidebarProps {
-  entries: JournalEntrySummary[];
+  entries?: JournalEntrySummary[];
   selectedEntryId: string | null;
   onSelectEntry: (id: string) => void;
   onNewEntryClick: () => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
-  entries,
+  entries = [],
   selectedEntryId,
   onSelectEntry,
   onNewEntryClick,

@@ -2,14 +2,16 @@ export interface JournalEntrySummary {
   id: string;
   title: string;
   snippet: string; // First line or generated snippet
-  date: string; // Or Date object, formatting handled in component
+  entry_date: string; // Or Date object, formatting handled in component
 }
 
 export interface MusicRecommendationData {
   id: string;
-  title: string;
+  rec_name: string;
   artist: string;
-  imageUrl?: string; // Optional image URL
+  metadata?: {
+    image_url?: string,
+  }
   // TODO: Add links or playback info
 }
 

@@ -30,7 +30,7 @@ const EntryListItem: React.FC<EntryListItemProps> = ({ entry, isActive, onSelect
         {entry.title} / {entry.snippet}
       </Text>
       <Text fontSize="xs" color="gray.500">
-        {entry.date}
+        {entry.entry_date}
       </Text>
     </ListItem>
   );

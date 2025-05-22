@@ -29,9 +29,8 @@ class Recommendation(models.Model):
     rec_type = models.CharField(max_length=32)
     rec_id = models.CharField(max_length=128)
     rec_name = models.CharField(max_length=256)
-    rationale = models.TextField()
+    artist = models.CharField(max_length=256)
     metadata = models.JSONField()
-    recommended_at = models.DateTimeField(auto_now_add=True)
 
 class UserToken(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
