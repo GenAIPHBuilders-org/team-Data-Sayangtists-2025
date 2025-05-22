@@ -22,20 +22,19 @@ const Sidebar: React.FC<SidebarProps> = ({
       as="aside"
       w="280px"
       h="100%"
-      bg="gray.50"
+      bg="background.secondary"
       borderRight="1px solid"
       borderColor="gray.200"
       p={5}
       overflowY="auto"
     >
       <VStack align="stretch" spacing={5}>
-        <Heading as="h1" size="lg" color="gray.700">
+        <Heading as="h1" size="lg" color="text.primary">
           My Journal
         </Heading>
         <Button
           onClick={onNewEntryClick}
-          bg="gray.200"
-          _hover={{ bg: 'gray.300' }}
+          colorScheme="brand"
           fontWeight="normal"
         >
           + New Entry

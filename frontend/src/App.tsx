@@ -144,7 +144,7 @@ function App() {
   return (
     <Flex h="100vh" w="100vw" overflow="hidden">
       {isEntriesLoading ? (
-        <Center w="280px" h="100%" bg="gray.50" borderRight="1px solid" borderColor="gray.200">
+        <Center w="280px" h="100%" bg="background.secondary" borderRight="1px solid" borderColor="gray.200">
           <Spinner />
         </Center>
       ) : (
