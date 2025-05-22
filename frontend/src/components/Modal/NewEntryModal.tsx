@@ -44,10 +44,10 @@ const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave, 
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered closeOnOverlayClick={!isSaving}>
+    <Modal isOpen={isOpen} onClose={handleRequestClose} size="xl" isCentered closeOnOverlayClick={!isSaving}>
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader fontWeight="bold" fontSize="xl">
+      <ModalContent mx={{ base: 4, sm: 0}}>
+        <ModalHeader fontWeight="bold" fontSize="xl" color="text.primary">
           New Entry
         </ModalHeader>
         <ModalCloseButton disabled={isSaving} />
@@ -58,6 +58,8 @@ const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave, 
             onChange={(e) => setTitle(e.target.value)}
             mb={4}
             isDisabled={isSaving}
+            focusBorderColor='brand.500'
+            autoFocus
           />
           <Textarea
             placeholder="Start writing your entry here..."
@@ -65,6 +67,7 @@ const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave, 
             onChange={(e) => setContent(e.target.value)}
             minHeight="200px"
             isDisabled={isSaving}
+            focusBorderColor='brand.500'
           />
         </ModalBody>
 
@@ -73,7 +76,7 @@ const NewEntryModal: React.FC<NewEntryModalProps> = ({ isOpen, onClose, onSave, 
             Cancel
           </Button>
           <Button
-            colorScheme="blue"
+            colorScheme="brand"
             onClick={handleSave}
             isLoading={isSaving}
             isDisabled={isSaving || !title.trim() || !content.trim()}
