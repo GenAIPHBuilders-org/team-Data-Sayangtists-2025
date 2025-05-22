@@ -10,32 +10,34 @@ interface MusicRecommendationProps {
 
 const MusicRecommendation: React.FC<MusicRecommendationProps> = ({ recommendation }) => {
   return (
-    <Flex align="center" bg="gray.50" p={4} borderRadius="md">
-      <Box w="80px" h="80px" bg="gray.300" borderRadius="sm" mr={5}>
-        {recommendation.metadata?.image_url && (
+    <Flex align="center" bg="background.secondary" p={4} borderRadius="md" boxShadow="md">
+      <Box w="80px" h="80px" bg="gray.100" borderRadius="sm" mr={5} display="flex" alignItems="center" justifyContent="center">
+        {recommendation.metadata?.image_url ? (
           <Image
-            src={recommendation.metadata?.image_url}
+            src={recommendation.metadata.image_url}
             alt={recommendation.rec_name}
             boxSize="80px"
             objectFit="cover"
             borderRadius="sm"
           />
+        ) : (
+          <Text fontSize="2xl" color="gray.400">🎵</Text>
         )}
       </Box>
       <Box flexGrow={1}>
-        <Heading as="h4" size="sm" mb={1} color="gray.700">
+        <Heading as="h4" size="md" mb={1} color="text.primary">
           {recommendation.rec_name}
         </Heading>
-        <Text fontSize="sm" color="gray.600" mb={2}>
+        <Text fontSize="sm" color="text.secondary" mb={2}>
           {recommendation.artist}
         </Text>
         <Flex align="center">
-          <Text fontSize="xs" color="gray.500" mr={2}>
+          <Text fontSize="xs" color="text.secondary" mr={2}>
             Listen on...
           </Text>
-          <Circle size="12px" bg="gray.400" mr={1} />
-          <Circle size="12px" bg="gray.400" mr={1} />
-          <Circle size="12px" bg="gray.400" />
+          <Circle size="20px" bg="brand.400" mr={2} cursor="pointer" _hover={{ bg: 'brand.500' }} />
+          <Circle size="20px" bg="brand.400" mr={2} cursor="pointer" _hover={{ bg: 'brand.500' }} />
+          <Circle size="20px" bg="brand.400" mr={2} cursor="pointer" _hover={{ bg: 'brand.500' }} />
         </Flex>
       </Box>
     </Flex>
