@@ -17,7 +17,7 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
     switch (viewState) {
       case 'welcome':
         return (
-          <Center h="80%" textAlign="center" color="gray.500" fontSize="lg">
+          <Center h="80%" textAlign="center" color="text.secondary" fontSize="lg">
             Select an entry from the left to view it, or click &lsquo;+ New Entry&rsquo; to start
             writing
           </Center>
@@ -40,18 +40,18 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
         return (
           <VStack align="stretch" spacing={8}>
             <Box>
-              <Heading as="h2" size="xl" mb={4} color="gray.700">
+              <Heading as="h2" size="xl" mb={4} color="text.primary">
                 {entryData.title} / {new Date(entryData.entry_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
               </Heading>
-              <Text fontSize="md" lineHeight="tall" color="gray.600" whiteSpace="pre-wrap">
+              <Text fontSize="md" lineHeight="tall" color="text.primary" whiteSpace="pre-wrap">
                 {entryData.content}
               </Text>
             </Box>
 
-            <Divider />
+            <Divider borderColor="gray.300" />
 
             <Box>
-              <Heading as="h3" size="lg" mb={6} color="gray.700">
+              <Heading as="h3" size="lg" mb={6} color="text.primary">
                 Music Recommendations
               </Heading>
               {entryData.recommendations.length > 0 ? (
@@ -61,7 +61,7 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
                   ))}
                 </VStack>
               ) : (
-                <Text color="gray.500">No recommendations available for this entry yet.</Text>
+                <Text color="text.secondary">No recommendations available for this entry yet.</Text>
               )}
             </Box>
           </VStack>
@@ -72,7 +72,7 @@ const MainContent: React.FC<MainContentProps> = ({ viewState, entryData }) => {
   };
 
   return (
-    <Box as="main" flexGrow={1} h="100%" p={10} overflowY="auto" bg="white">
+    <Box as="main" flexGrow={1} h="100%" p={8} overflowY="auto" bg="white">
       {renderContent()}
     </Box>
   );
