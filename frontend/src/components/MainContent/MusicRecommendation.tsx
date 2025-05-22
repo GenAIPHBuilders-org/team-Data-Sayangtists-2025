@@ -1,8 +1,8 @@
-import { Box, Flex, Heading, Text, Image, Circle } from '@chakra-ui/react';
+import { Box, Flex, Heading, Text, Image } from '@chakra-ui/react';
 import React from 'react';
 
 import { MusicRecommendationData } from '../../types/index.ts';
-// import styles from './MusicRecommendation.module.css';
+import { SpotifyIcon, AppleMusicIcon, YoutubeMusicIcon } from "../Icons";
 
 interface MusicRecommendationProps {
   recommendation: MusicRecommendationData;
@@ -32,12 +32,18 @@ const MusicRecommendation: React.FC<MusicRecommendationProps> = ({ recommendatio
           {recommendation.artist}
         </Text>
         <Flex align="center">
-          <Text fontSize="xs" color="text.secondary" mr={2}>
+          <Text fontSize="xs" color="text.secondary" mr={3}>
             Listen on...
           </Text>
-          <Circle size="20px" bg="brand.400" mr={2} cursor="pointer" _hover={{ bg: 'brand.500' }} />
-          <Circle size="20px" bg="brand.400" mr={2} cursor="pointer" _hover={{ bg: 'brand.500' }} />
-          <Circle size="20px" bg="brand.400" mr={2} cursor="pointer" _hover={{ bg: 'brand.500' }} />
+          <Box as='a' href='#' target='_blank' rel='noopener noreferrer' mr={2}>
+            <SpotifyIcon boxSize='20px' cursor='pointer' _hover={{ opacity: 0.7 }} />
+          </Box>
+          <Box as='a' href='#' target='_blank' rel='noopener noreferrer' mr={2}>
+            <AppleMusicIcon boxSize='20px' cursor='pointer' _hover={{ opacity: 0.7 }} />
+          </Box>
+          <Box as='a' href='#' target='_blank' rel='noopener noreferrer'>
+            <YoutubeMusicIcon boxSize='20px' cursor='pointer' _hover={{ opacity: 0.7 }} />
+          </Box>
         </Flex>
       </Box>
     </Flex>
