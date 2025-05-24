@@ -7,7 +7,7 @@ import requests
 import uuid
 from pathlib import Path
 
-backend_env_path = Path(__file__).resolve().parent.parent.parent / "backend" / ".env"
+backend_env_path = Path(__file__).resolve().parent.parent / "backend" / ".env"
 
 # Load environment variables
 load_dotenv(dotenv_path=backend_env_path)
