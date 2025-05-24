@@ -60,7 +60,7 @@ echo 3. If you use a virtual environment for the backend, activate it.
 echo    (e.g., backend\.venv\Scripts\activate)
 echo 4. Ensure your .env file with API keys (GOOG_API_KEY, LFM_API_KEY)
 echo    is in the 'backend/' directory
-echo 5. Run the script: python ai/test/recommendations.py
+echo 5. Run the script: python ai/recommendations.py
 echo    (You might need to provide input text as prompted by the script)
 echo.
 echo ========================================================================
