@@ -21,7 +21,7 @@ from .serializers import (
     JournalEntryDetailSerializer
 )
 
-from ai.test.recommendations_prim import build_recommendations
+from ai.recommendations import build_recommendations
 
 
 User = get_user_model()
