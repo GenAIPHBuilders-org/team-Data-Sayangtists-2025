@@ -1,0 +1,8 @@
+.venv/
+
+# local SQLite database
+db.sqlite3
+
+# Bytecode & caches
+*.py[cod]
+__pycache__/
