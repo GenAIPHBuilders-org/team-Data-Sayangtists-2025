@@ -12,7 +12,7 @@ VibeScribe is an intelligent journaling application designed to enhance your ref
 
 ## Team Members
 
-*   Shaun MarvinAcenas
+*   Shaun Marvin Acenas
 *   Dean Avior Peñamora
 *   Zen Adrian Tandogon
 
