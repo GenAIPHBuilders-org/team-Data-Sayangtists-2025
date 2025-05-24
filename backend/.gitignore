@@ -1,5 +1,4 @@
-# Python env inside backend
-/backend/env/
+.venv/
 
 # local SQLite database
 db.sqlite3
@@ -7,4 +6,3 @@ db.sqlite3
 # Bytecode & caches
 *.py[cod]
 __pycache__/
-*/migrations/

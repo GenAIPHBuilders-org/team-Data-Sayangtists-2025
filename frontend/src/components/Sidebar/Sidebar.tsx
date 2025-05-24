@@ -30,7 +30,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     >
       <VStack align="stretch" spacing={5}>
         <Heading as="h1" size="lg" color="text.primary">
-          My Journal
+          VibeScribe
         </Heading>
         <Button
           onClick={onNewEntryClick}

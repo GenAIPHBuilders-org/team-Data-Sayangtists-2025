@@ -5,11 +5,12 @@ import os
 import json
 import requests
 import uuid
+from pathlib import Path
+
+backend_env_path = Path(__file__).resolve().parent.parent / "backend" / ".env"
 
 # Load environment variables
-load_dotenv()
-
-load_dotenv(dotenv_path="../env/.env")
+load_dotenv(dotenv_path=backend_env_path)
 
 # API keys
 genai.configure(api_key=os.getenv("GOOG_API_KEY")) # type: ignore
